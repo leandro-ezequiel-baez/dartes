@@ -2,6 +2,12 @@
 # 🧝 ELFO — Ramas de Progresión
 
 ---
+##Lore
+
+
+
+
+
 
 ## 🌿 Rama Arcana Principal
 [Aprendiz](Aprendiz.md) → [Hechicero](Hechicero.md) → [Mago](Mago.md) → [Archimago](Archimago.md) → [Mago Arcano](Mago%20Arcano.md)
