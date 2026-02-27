@@ -1,4 +1,5 @@
 #Encantamiento Elementales
+
 | Encantamiento Temporal | Costo (MO) |   |   |   | Encantamiento Permanente | Costo (MO) |
 |------------------------|------------|---|---|---|--------------------------|------------|
 | Elemental nivel 1      | 230 – 300  |   |   |   | Elemental nivel 1        | 260 – 330  |
