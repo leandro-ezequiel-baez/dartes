@@ -2,8 +2,8 @@
 
 ## 📑 Índice
 
-- [Ver clases](clases.md)
-- [Tabla de niveles](Tabla-de-niveles.md)
-- [Ganancia de experiencia](Ganancia-de-experiencia.md)
-- [Puntos de equipo](Puntos-de-equipo.md)
-- [Costo de encantamiento](Costo-de-encantamiento.md)
+- [Ver razas](./documentacion/raza/razas.md)
+- [Tabla de niveles](./documentacion/Tabla-de-niveles.md)
+- [Ganancia de experiencia](./documentacion/Ganancia-de-experiencia.md)
+- [Puntos de equipo](./documentacion/Puntos-de-equipo.md)
+- [Costo de encantamiento](./documentacion/Costo-de-encantamiento.md)
