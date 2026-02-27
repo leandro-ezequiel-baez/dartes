@@ -1,4 +1,4 @@
-#Encantamiento Elementales
+# Encantamiento Elementales
 
 | Encantamiento Temporal | Costo (MO) |   |   |   | Encantamiento Permanente | Costo (MO) |
 |------------------------|------------|---|---|---|--------------------------|------------|
@@ -8,7 +8,7 @@
 | Elemental nivel 4      | 320 – 390  |   |   |   | Elemental nivel 4        | 440 – 510  |
 | Elemental azaroso      | 290 – 360  |   |   |   | Elemental azaroso        | 410 – 480  |
 
-#Encantamiento no elemental
+# Encantamiento no elemental
 
 | Encantamiento Temporal        | Costo (MO) |   |   |   | Encantamiento Permanente       | Costo (MO) |
 |-------------------------------|------------|---|---|---|--------------------------------|------------|
