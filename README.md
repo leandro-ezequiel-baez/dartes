@@ -1,10 +1,7 @@
 # D'artes
 ### Indice
-[Ver clases](Clases.md)
-[Ver clases](Bestiario.md)
+[Ver clases](clases.md)
 [Tabla de niveles](Tabla-de-niveles.md)
 [Ganancia de experiencia](Ganancia-de-experiencia.md)
-[Ver clases](clases.md)
-[Ver clases](clases.md)
-[Ver clases](clases.md)
-[Ver clases](clases.md)
+[Puntos de equipo](Puntos-de-equipo.md)
+[Costo de encantamiento](Costo-de-encantamiento.md)
