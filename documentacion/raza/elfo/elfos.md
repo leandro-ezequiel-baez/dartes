@@ -1,8 +1,8 @@
-#Lore
+# Lore
 # 🧝 ELFO — Ramas de Progresión
 
 ---
-##Lore
+## Lore
 
 
 
