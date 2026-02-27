@@ -10,7 +10,7 @@
 
 
 ## 🌿 Rama Arcana Principal
-[Aprendiz](Aprendiz.md) → [Hechicero](Hechicero.md) → [Mago](Mago.md) → [Archimago](Archimago.md) → [Mago Arcano](Mago%20Arcano.md)
+[Aprendiz](Aprendiz.md) → [Hechicero](Hechicero.md) → [Mago](Mago.md) → [Archimago](Archimago.md) → [Mago Arcano](MagoArcano.md)
 
 ---
 
