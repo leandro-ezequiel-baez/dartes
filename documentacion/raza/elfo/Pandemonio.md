@@ -66,4 +66,4 @@ demonio con el que se vincula; aun así, es su voluntad la que continúa triunfa
 | 🔹 Reduce 30% del daño por magia física | 3 | 3 |
 | 🔹 Reduce 30% del daño por magia divina | 3 | 3 |
 
----
+--- 

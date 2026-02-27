@@ -1,2 +1,2 @@
-# clases
+# Razas
 [Elfos](./elfo/elfos.md)
