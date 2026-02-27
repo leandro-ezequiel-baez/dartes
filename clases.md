@@ -1,2 +1,2 @@
 #clases
-[Elfos](Elfos.md)
+[Elfos](elfos.md)
