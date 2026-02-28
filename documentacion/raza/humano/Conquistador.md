@@ -25,6 +25,12 @@ El **Conquistador** posee una fuerza desbordante que le permite potenciar su arm
 
 ---
 
+## 🌱 Progresión
+
+🔼 **Clase Anterior:**
+- 🔥 [Inquisidor](Inquisidor.md)
+---
+
 # ✨ Habilidades
 
 ## 🛡️ Maestría en Armas Pesadas

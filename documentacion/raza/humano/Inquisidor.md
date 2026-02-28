@@ -25,6 +25,16 @@ En el campo de batalla, el **Inquisidor** es un formidable enemigo, no solo por 
 
 ---
 
+## 🌱 Progresión
+
+🔼 **Clase Anterior:**  
+[Lancero](Lancero.md)
+
+🔽 **Siguiente Evolución:**  
+[Conquistador](Conquistador.md)
+
+---
+
 # 🔮 Habilidades
 
 ## 💠 Romper Arma  

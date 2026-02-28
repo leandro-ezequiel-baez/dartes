@@ -25,6 +25,16 @@ El deseo de proteger a sus camaradas prevalece en el corazón del **Caballero**,
 
 ---
 
+## ✝️🌱 Progresión
+
+🔼 🛡️ **Clase Anterior:**  
+[Templario](Templario.md)
+
+🔽 👑✨ **Siguiente Evolución:**  
+[Paladín](Paladin.md)
+
+---
+
 # 🔮 Habilidades
 
 ## 🛡️ Bloqueo Mágico  

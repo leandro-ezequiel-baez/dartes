@@ -26,6 +26,14 @@ El **Paladín** es un defensor ejemplar, combinando protección a sus aliados co
 
 ---
 
+## 🌱 Progresión
+
+🔼 🏰⚔️ **Clase Anterior:**  
+[Caballero](Caballero.md)
+
+
+---
+
 # ✨ Habilidades
 
 ## ✨ Bloqueo Sagrado  

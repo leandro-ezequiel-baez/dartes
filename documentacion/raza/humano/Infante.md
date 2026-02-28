@@ -28,6 +28,15 @@ Evita enfrentamientos desventajosos siempre que sea posible, pero busca constant
 
 ---
 
+## 🌱 Progresión
+
+🔽 **Clases Disponibles:**  
+- ⚔️ [Escudero](Escudero.md)  
+- 🗡️ [Bandido](Bandido.md)
+
+---
+
+
 # ⚔️ Habilidades
 
 ## 🌀 Esquive  

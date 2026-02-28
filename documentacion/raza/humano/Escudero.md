@@ -27,6 +27,18 @@ Lo que nunca debe olvidar es la causa por la que eligió pelear.
 
 ---
 
+## 🌱 Progresión
+
+🔼 **Clase Anterior:**  
+- ⚔️ [Infante](Infante.md)
+
+🔽 **Clases Disponibles:**  
+- 🏹 [Lancero](Lancero.md)  
+- ⛪ [Templario](Templario.md)
+
+---
+
+
 # ⚔️ Habilidades
 
 ## 🛡️ Bloqueo  

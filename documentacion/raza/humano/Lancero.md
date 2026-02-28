@@ -27,6 +27,16 @@ Prefiere usar la lanza junto a un escudo, siguiendo su lema: “La práctica hac
 
 ---
 
+## 🌱 Progresión
+
+🔼 **Clase Anterior:**  
+- ⚔️ [Escudero](Escudero.md)
+
+🔽 **Clases Disponibles:**  
+- 🔥 [Inquisidor](Inquisidor.md)
+
+---
+
 # ⚔️ Habilidades
 
 ## 🏹 Arremetida  

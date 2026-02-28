@@ -27,6 +27,16 @@ Su gran fuerza proviene de su apasionado sentimiento de defender al necesitado.
 
 ---
 
+## 🌱 Progresión
+
+🔼 **Clase Anterior:**  
+[Escudero](Escudero.md)
+
+🔽 **Siguiente Evolución:**  
+[Caballero](Caballero.md)
+
+---
+
 # ⚔️ Habilidades
 
 ## 🛡️ Bloqueo Ageno  
