@@ -1,54 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Editor de Mapa RPG</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+body { margin:0; font-family:Arial; }
+#map { height: 90vh; }
+.panel {
+    height:10vh;
+    background:#222;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+}
+button, select, input {
+    padding:5px;
+}
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div class="panel">
+    <input type="text" id="rutaNombre" placeholder="Nombre de la ruta">
+    <button onclick="crearRuta()">Crear Ruta</button>
+
+    <select id="selectorRuta" onchange="cambiarRuta()"></select>
+
+    <button onclick="borrarRuta()">Borrar Ruta</button>
+    <button onclick="exportarRuta()">Exportar</button>
+    <input type="file" onchange="importarRuta(event)">
+</div>
+
 <script>
-    var map = L.map('map', {
-        crs: L.CRS.Simple,
-        minZoom: -2
-    });
 
-    var bounds = [[0,0], [1000,1000]];
-    L.imageOverlay('mapa.jpg', bounds).addTo(map);
-    map.fitBounds(bounds);
+var map = L.map('map', { crs: L.CRS.Simple });
+var bounds = [[0,0], [1000,1000]];
+L.imageOverlay('mapa.jpg', bounds).addTo(map);
+map.fitBounds(bounds);
 
-    // Usamos un LayerGroup para manejar marcadores y que sea fácil borrarlos
-    var capaMarcadores = L.layerGroup().addTo(map);
-    var capaLineas = L.layerGroup().addTo(map);
+var rutas = JSON.parse(localStorage.getItem("rutas")) || {};
+var rutaActual = null;
+var markers = [];
+var polyline;
 
-    var puntos = JSON.parse(localStorage.getItem("ruta")) || [];
+// ---------- GUARDAR ----------
+function guardar() {
+    localStorage.setItem("rutas", JSON.stringify(rutas));
+}
 
-    function redibujar() {
-        // 1. Limpiar todas las capas visuales
-        capaMarcadores.clearLayers();
-        capaLineas.clearLayers();
+// ---------- REDIBUJAR ----------
+function redibujar() {
 
-        // 2. Dibujar marcadores
-        puntos.forEach((p, index) => {
-            var marker = L.marker(p);
-            
-            // Evento de borrado mejorado
-            marker.on('click', function(e) {
-                L.DomEvent.stopPropagation(e); // Evita que el click pase al mapa y cree otro punto
-                puntos.splice(index, 1);
-                guardarYRenderizar();
-            });
-            
-            marker.addTo(capaMarcadores);
+    if (polyline) map.removeLayer(polyline);
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+
+    if (!rutaActual) return;
+
+    var puntos = rutas[rutaActual];
+
+    puntos.forEach((p, index) => {
+
+        var marker = L.marker(p, { draggable:true }).addTo(map);
+
+        marker.index = index;
+
+        marker.on('contextmenu', function() {
+            puntos.splice(marker.index,1);
+            guardar();
+            redibujar();
         });
 
-        // 3. Dibujar línea
-        if (puntos.length > 1) {
-            L.polyline(puntos, {color: 'red', weight: 3}).addTo(capaLineas);
-        }
-    }
+        marker.on('dragend', function(e){
+            puntos[marker.index] = [
+                e.target.getLatLng().lat,
+                e.target.getLatLng().lng
+            ];
+            guardar();
+            redibujar();
+        });
 
-    function guardarYRenderizar() {
-        localStorage.setItem("ruta", JSON.stringify(puntos));
-        redibujar();
-    }
-
-    map.on('click', function(e) {
-        puntos.push([e.latlng.lat, e.latlng.lng]);
-        guardarYRenderizar();
+        markers.push(marker);
     });
 
-    // Inicio
+    if (puntos.length > 1) {
+        polyline = L.polyline(puntos).addTo(map);
+    }
+}
+
+// ---------- CREAR RUTA ----------
+function crearRuta() {
+
+    var nombre = document.getElementById("rutaNombre").value.trim();
+    if (!nombre) return;
+
+    if (!rutas[nombre]) {
+        rutas[nombre] = [];
+    }
+
+    rutaActual = nombre;
+    actualizarSelector();
+    guardar();
     redibujar();
+}
+
+// ---------- CAMBIAR RUTA ----------
+function cambiarRuta() {
+    rutaActual = document.getElementById("selectorRuta").value;
+    redibujar();
+}
+
+// ---------- BORRAR RUTA ----------
+function borrarRuta() {
+    if (!rutaActual) return;
+
+    delete rutas[rutaActual];
+    rutaActual = null;
+    actualizarSelector();
+    guardar();
+    redibujar();
+}
+
+// ---------- ACTUALIZAR SELECTOR ----------
+function actualizarSelector() {
+    var selector = document.getElementById("selectorRuta");
+    selector.innerHTML = "";
+
+    Object.keys(rutas).forEach(nombre => {
+        var option = document.createElement("option");
+        option.value = nombre;
+        option.text = nombre;
+        selector.appendChild(option);
+    });
+
+    if (rutaActual) selector.value = rutaActual;
+}
+
+// ---------- EXPORTAR ----------
+function exportarRuta() {
+
+    if (!rutaActual) return;
+
+    var dataStr = "data:text/json;charset=utf-8," + 
+        encodeURIComponent(JSON.stringify(rutas[rutaActual]));
+
+    var dl = document.createElement('a');
+    dl.setAttribute("href", dataStr);
+    dl.setAttribute("download", rutaActual + ".json");
+    dl.click();
+}
+
+// ---------- IMPORTAR ----------
+function importarRuta(event) {
+
+    var file = event.target.files[0];
+    if (!file) return;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+
+        var contenido = JSON.parse(e.target.result);
+        var nombre = file.name.replace(".json","");
+
+        rutas[nombre] = contenido;
+        rutaActual = nombre;
+
+        actualizarSelector();
+        guardar();
+        redibujar();
+    };
+
+    reader.readAsText(file);
+}
+
+// ---------- CLICK MAPA ----------
+map.on('click', function(e) {
+
+    if (!rutaActual) return;
+
+    rutas[rutaActual].push([e.latlng.lat, e.latlng.lng]);
+    guardar();
+    redibujar();
+});
+
+// ---------- INICIALIZAR ----------
+actualizarSelector();
+
 </script>
+
+</body>
+</html>
