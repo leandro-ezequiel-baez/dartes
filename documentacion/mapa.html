@@ -43,7 +43,7 @@ button, select, input {
 
 var map = L.map('map', { crs: L.CRS.Simple });
 var bounds = [[0,0], [1000,1000]];
-L.imageOverlay('mapa.jpg', bounds).addTo(map);
+L.imageOverlay('mapa.png', bounds).addTo(map);
 map.fitBounds(bounds);
 
 var rutas = JSON.parse(localStorage.getItem("rutas")) || {};
