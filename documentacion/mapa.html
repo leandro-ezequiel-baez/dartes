@@ -8,24 +8,30 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<style>
-button, select, input {
-    padding:10px;
-    font-size:16px;
+<style>body {
+    margin:0;
+    font-family:Arial;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
 }
-body { margin:0; font-family:Arial; }
-#map { height: 90vh; }
+
+#map {
+    flex:1;
+}
+
 .panel {
-    height:10vh;
     background:#222;
     color:white;
     display:flex;
-    align-items:center;
+    flex-wrap:wrap;
     gap:10px;
     padding:10px;
 }
+
 button, select, input {
-    padding:5px;
+    padding:10px;
+    font-size:16px;
 }
 </style>
 </head>
