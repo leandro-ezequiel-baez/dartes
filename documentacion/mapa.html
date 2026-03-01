@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8"/>
 <title>Editor de Mapa RPG</title>
 
@@ -8,6 +9,10 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <style>
+button, select, input {
+    padding:10px;
+    font-size:16px;
+}
 body { margin:0; font-family:Arial; }
 #map { height: 90vh; }
 .panel {
@@ -40,8 +45,11 @@ button, select, input {
 </div>
 
 <script>
-
-var map = L.map('map', { crs: L.CRS.Simple });
+var map = L.map('map', { 
+    crs: L.CRS.Simple,
+    tap: true,
+    touchZoom: true
+});
 var bounds = [[0,0], [1000,1000]];
 L.imageOverlay('mapa.png', bounds).addTo(map);
 map.fitBounds(bounds);
@@ -73,10 +81,20 @@ function redibujar() {
 
         marker.index = index;
 
-        marker.on('contextmenu', function() {
-            puntos.splice(marker.index,1);
-            guardar();
-            redibujar();
+        let lastTap = 0;
+
+        marker.on('click', function(e) {
+        
+            const now = new Date().getTime();
+            const tapLength = now - lastTap;
+        
+            if (tapLength < 300 && tapLength > 0) {
+                puntos.splice(marker.index,1);
+                guardar();
+                redibujar();
+            }
+        
+            lastTap = now;
         });
 
         marker.on('dragend', function(e){
