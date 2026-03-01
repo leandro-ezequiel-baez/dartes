@@ -1,57 +1,54 @@
 <script>
-
-var map = L.map('map', {
-    crs: L.CRS.Simple
-});
-
-var bounds = [[0,0], [1000,1000]];
-var image = L.imageOverlay('mapa.jpg', bounds).addTo(map);
-map.fitBounds(bounds);
-
-var puntos = JSON.parse(localStorage.getItem("ruta")) || [];
-var markers = [];
-var polyline;
-
-// Función para redibujar todo
-function redibujar() {
-
-    // borrar línea anterior
-    if (polyline) {
-        map.removeLayer(polyline);
-    }
-
-    // borrar marcadores anteriores
-    markers.forEach(m => map.removeLayer(m));
-    markers = [];
-
-    // crear nuevos marcadores
-    puntos.forEach((p, index) => {
-        var marker = L.marker(p).addTo(map);
-
-        // click para borrar
-        marker.on('click', function() {
-            puntos.splice(index, 1);
-            localStorage.setItem("ruta", JSON.stringify(puntos));
-            redibujar();
-        });
-
-        markers.push(marker);
+    var map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -2
     });
 
-    // dibujar línea nueva
-    if (puntos.length > 1) {
-        polyline = L.polyline(puntos).addTo(map);
+    var bounds = [[0,0], [1000,1000]];
+    L.imageOverlay('mapa.jpg', bounds).addTo(map);
+    map.fitBounds(bounds);
+
+    // Usamos un LayerGroup para manejar marcadores y que sea fácil borrarlos
+    var capaMarcadores = L.layerGroup().addTo(map);
+    var capaLineas = L.layerGroup().addTo(map);
+
+    var puntos = JSON.parse(localStorage.getItem("ruta")) || [];
+
+    function redibujar() {
+        // 1. Limpiar todas las capas visuales
+        capaMarcadores.clearLayers();
+        capaLineas.clearLayers();
+
+        // 2. Dibujar marcadores
+        puntos.forEach((p, index) => {
+            var marker = L.marker(p);
+            
+            // Evento de borrado mejorado
+            marker.on('click', function(e) {
+                L.DomEvent.stopPropagation(e); // Evita que el click pase al mapa y cree otro punto
+                puntos.splice(index, 1);
+                guardarYRenderizar();
+            });
+            
+            marker.addTo(capaMarcadores);
+        });
+
+        // 3. Dibujar línea
+        if (puntos.length > 1) {
+            L.polyline(puntos, {color: 'red', weight: 3}).addTo(capaLineas);
+        }
     }
-}
 
-// agregar punto nuevo
-map.on('click', function(e) {
-    puntos.push([e.latlng.lat, e.latlng.lng]);
-    localStorage.setItem("ruta", JSON.stringify(puntos));
+    function guardarYRenderizar() {
+        localStorage.setItem("ruta", JSON.stringify(puntos));
+        redibujar();
+    }
+
+    map.on('click', function(e) {
+        puntos.push([e.latlng.lat, e.latlng.lng]);
+        guardarYRenderizar();
+    });
+
+    // Inicio
     redibujar();
-});
-
-// dibujar al iniciar
-redibujar();
-
 </script>
