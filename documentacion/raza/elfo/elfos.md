@@ -24,19 +24,19 @@
 ---
 
 ## 🏹 Rama Noble Marcial
-[Arquero](Arquero.md) → [Espadachin](Espadachin.md) → [Patricio](Patricio.md) → [Noble](Noble.md) → [Elite](Elite.md)
+[Arquero](arquero.md) → [Espadachin](Espadachin.md) → [Patricio](Patricio.md) → [Noble](Noble.md) → [Elite](Elite.md)
 
 ---
 
 ## ⚔ Rama del Guerrero Técnico
-[Arquero](Arquero.md) → [Espadachin](Espadachin.md) → [Proselito](Proselito.md) → [Esgrimista](Esgrimista.md) → [Samurai](Samurai.md)
+[Arquero](arquero.md) → [Espadachin](Espadachin.md) → [Proselito](Proselito.md) → [Esgrimista](Esgrimista.md) → [Samurai](Samurai.md)
 
 ---
 
 ## 🐺 Rama del Cazador Salvaje
-[Arquero](Arquero.md) → [Cazador](Cazador.md) → [Trampero](Trampero.md) → [Apresor](Apresor.md) → [Depredador](Depredador.md)
+[Arquero](arquero.md) → [Cazador](Cazador.md) → [Trampero](Trampero.md) → [Apresor](Apresor.md) → [Depredador](Depredador.md)
 
 ---
 
 ## 🦅 Rama del Guardián Élfico
-[Arquero](Arquero.md) → [Cazador](Cazador.md) → [Halcon](Halcon.md) → [Centinela](Centinela.md) → [Dalfos](Dalfos.md)
+[Arquero](arquero.md) → [Cazador](Cazador.md) → [Halcon](Halcon.md) → [Centinela](Centinela.md) → [Dalfos](Dalfos.md)
